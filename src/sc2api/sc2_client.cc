@@ -2140,6 +2140,10 @@ void ControlImp::IssueUpgradeEvents() {
 }
 
 bool ControlImp::IssueEvents(const std::vector<Tag>& commands) {
+    if (observation_imp_->chat_.size() > 0) {
+        client_.OnChatMessagesReceived(observation_imp_->chat_);
+    }
+
     if (observation_imp_->current_game_loop_ == observation_imp_->previous_game_loop) {
         return false;
     }

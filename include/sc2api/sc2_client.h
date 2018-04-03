@@ -23,6 +23,7 @@ class QueryInterface;
 class DebugInterface;
 class ControlInterface;
 class ControlImp;
+struct ChatMessage;
 
 /*! Errors that the api can encounter, if the OnError event in ClientEvents is overwritten it will contain a list of errors encountered. */
 enum class ClientError {
@@ -91,6 +92,8 @@ public:
 
     //! Called for various errors the library can encounter. See ClientError enum for possible errors.
     virtual void OnError(const std::vector<ClientError>& /*client_errors*/, const std::vector<std::string>& /*protocol_errors*/ = {}) {}
+
+    virtual void OnChatMessagesReceived(const std::vector<ChatMessage>& /*messages*/) {}
 };
 
 //! The base class for Agent and ReplayObserver.

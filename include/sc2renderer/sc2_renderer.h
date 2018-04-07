@@ -9,6 +9,7 @@ namespace renderer {
     void Matrix8BPPHeightMap(const char* bytes, int w_mat, int h_mat, int off_x, int off_y, int px_w, int px_h);
     void Matrix8BPPPlayers(const char* bytes, int w_mat, int h_mat, int off_x, int off_y, int px_w, int px_h);
     void ImageRGB(const char* bytes, int width, int height, int off_x, int off_y);
+    void ImageRGBA(const char* bytes, int width, int height, int off_x, int off_y, int scale);
     void Render();
 }
 

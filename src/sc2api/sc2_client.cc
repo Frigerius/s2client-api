@@ -1952,6 +1952,8 @@ bool ControlImp::GetObservation() {
     SET_MESSAGE_RESPONSE(response_observation, response, observation);
     if (response_observation.HasErrors()) {
         std::cerr << std::endl << "Error in returning observation:" << std::endl;
+        if (response == nullptr)
+            return false;
         std::cerr << "The main response is of type: " << std::to_string(response->response_case()) << std::endl;
         if (response_observation.HasResponse()) {
             std::cerr << "There is no ResponseObservation/message!" << std::endl;
@@ -2099,7 +2101,7 @@ void ControlImp::IssueBuildingCompletedEvent(const Unit* unit) {
         return;
     }
 
-   auto found = observation_imp_->units_previous_map_.find(unit->tag);
+    auto found = observation_imp_->units_previous_map_.find(unit->tag);
 
     if (found == observation_imp_->units_previous_map_.end()) {
         return;

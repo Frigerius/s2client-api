@@ -186,7 +186,7 @@ bool ReplayControlImp::WaitForReplay() {
     const SC2APIProtocol::ResponseStartReplay& response_replay = response->start_replay();
     if (response_replay.has_error()) {
         SC2APIProtocol::ResponseStartReplay_Error err = response_replay.error();
-        std::cerr << "WaitForReplay: start replay contains an error: " << std::to_string(int(err)) << std::endl;
+        std::cerr << "WaitForReplay: start replay contains an error: " << std::to_string(int(err)) << " "<< replay_info_.replay_path << std::endl;
         if (response_replay.has_error_details())
             std::cerr << "WaitForReplay: error details: " << response_replay.error_details() << std::endl;
         return false;
